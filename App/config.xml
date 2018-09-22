@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
-	<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.jas-n.home" version="0.2.3">
+	<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.jas-n.home" version="0.2.4">
     <name>Jas-n Home</name>
     <description>
 		Stuff at Home
@@ -16,7 +16,7 @@
     -->
     <preference name="permissions"				value="none"/>
     <!-- Customize your app and platform with the preference element. -->
-    <preference name="orientation"				value="portrait" />	<!-- all: default means both landscape and portrait are enabled -->
+    <preference name="orientation"				value="all" />	<!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"			value="universal" /><!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen"				value="false" />	<!-- all: hides the status bar at the top of the screen -->
     <preference name="android-installLocation"	value="auto" />		<!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
