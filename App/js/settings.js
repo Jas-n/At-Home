@@ -1,0 +1,5 @@
+var settings={
+	init:function(){
+		
+	}
+};

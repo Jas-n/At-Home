@@ -1,4 +1,4 @@
-@import "variables";
+@import "app";
 @import "bootstrap/bootstrap";
 @import "fontawesome/fontawesome";
 @import "fontawesome/fa-brands";
@@ -6,6 +6,9 @@
 /*!
  * App Core Styles
 */
+body{
+	background-color: $gray-200;
+}
 footer{
 	color:#fff;
 	background:$blue;
@@ -23,4 +26,9 @@ footer{
 main{
 	margin-bottom:$footer-height;
 	padding:$spacer;
+	> .list-group,
+	.shadow{
+		box-shadow:		$box-shadow;
+		border-width:	0;
+	}
 }

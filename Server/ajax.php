@@ -1,7 +1,5 @@
 <?php header('Access-Control-Allow-Origin: *');
-// Defines
-define('ROOT',__DIR__.'/');
-include(ROOT.'functions.php');
+include('./init.php');
 if(!$_POST['key'] || $_POST['key']!='b3de695507ba629509ef810d00ca6006'){
 	json_return(array(
 		'status'=>false,
@@ -13,8 +11,6 @@ if(!$_POST['key'] || $_POST['key']!='b3de695507ba629509ef810d00ca6006'){
 		'message'=>'Class is invalid'
 	));
 }
-include(ROOT.'classes/database.php');
-$db=new database;
 include(ROOT.'classes/'.$_POST['class'].'.php');
 $class=new $_POST['class'];
 if(!$_POST['method'] || !method_exists($class,$_POST['method'])){
@@ -24,7 +20,7 @@ if(!$_POST['method'] || !method_exists($class,$_POST['method'])){
 	));
 }
 if($return=$class->{$_POST['method']}($_POST['data'])){
-	if(is_array($return) && (array_key_exists('data',$return) || array_key_exists('message',$return))){
+	if(is_array($return) && array_key_exists('status',$return)){
 		json_return($return);
 	}else{
 		json_return(array(

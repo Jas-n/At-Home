@@ -1,69 +1,12 @@
-<?php # 2.6.0 - 24/04/2018 12:14
-namespace Formation\Core;
-class database{
-	protected $user = "";
-	protected $pass = "";
-	protected $name = "";
+<?php class database{
+	protected $user	='Jas-n_home';
+	protected $pass	='gjmO^336';
+	protected $name	='Jas-n_home';
 	private $last_id;
 	private $rows_updated;
 	protected $db;
 	public function __construct(){
-		if(is_file(ROOT.'classes/connect.php')){
-			include(ROOT.'classes/connect.php');
-			$this->host=$host;
-			$this->name=$name;
-			$this->user=$user;
-			$this->pass=$pass;
-		}else{
-			echo 'No file: '.ROOT.'classes/connect.php';
-		}
 		$this->db=$this->con();
-	}
-	# Backup
-	public function backup($unused=NULL,$location=NULL){
-		$tables=$this->query('SHOW TABLES');
-		$tables=array_column($tables,'Tables_in_'.$this->database_name());
-		if($location==NULL){
-			$location=ROOT.'backups/'.date('Y-m-d_H-i-s');
-		}else{
-			$location=ROOT.$location;
-		}
-		if(!is_dir($location)){
-			mkdir($location,0777,1);
-		}
-		file_put_contents(
-			$location.'/database.sql',
-			"SET SQL_MODE = \"NO_AUTO_VALUE_ON_ZERO\";\nSET time_zone = \"+00:00\";\n\n\n/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;\n/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;\n/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;\n/*!40101 SET NAMES utf8 */;\n--\n-- Database: `".$this->database_name()."`\n--\n\n"
-		);
-		foreach($tables as $table){
-			$create			=$this->query('SHOW CREATE TABLE '.$table);
-			file_put_contents(
-				$location.'/database.sql',
-				"\n".$create[0]['Create Table'].";\n",
-				FILE_APPEND
-			);
-			$results=$this->query("SELECT * FROM `".$table."`");
-			if($results && !in_array($table,array('logs'))){
-				file_put_contents(
-					$location.'/database.sql',
-					"INSERT INTO `".$table."` VALUES \n",
-					FILE_APPEND
-				);
-				$lines=array();
-				foreach($results as $i=>$result){
-					foreach($result as $key=>&$value){
-						$value=addslashes($value);
-					}
-					$lines[]="('".implode("','",$result)."')";
-				}
-				file_put_contents(
-					$location.'/database.sql',
-					implode(",\n",$lines).";",
-					FILE_APPEND
-				);
-			}
-		}
-		return $location.'/database.sql';
 	}
 	# Cleans out JavaScript and additional HTML
 	private function cleanInput(&$input){
@@ -84,10 +27,10 @@ class database{
 	# DB Connect
 	protected function con(){
 		try{
-			$db=new \PDO('mysql:dbname='.$this->name.';host='.$this->host,$this->user,$this->pass);
+			$db=new PDO('mysql:dbname='.$this->name.';host=localhost',$this->user,$this->pass);
 			$db->query("SET NAMES UTF8");
 			return $db;
-		}catch(\PDOException $e){
+		}catch(PDOException $e){
 			echo '<h3>Error Connecting to Database!</h3>'.$e->getMessage();
 			exit;
 		}
@@ -97,25 +40,8 @@ class database{
 	}
 	# Stores Error
 	public function error($type='PHP',$message,$file,$line,$severity=NULL,$data=NULL){
-		global $core;
 		if(!$data){
 			$data=debug();
-		}
-		if($core){
-			$core->log_message(
-				1,
-				$type.' Error',
-				'<strong>Error: </strong>'.$message,
-				array(
-					'trace'=>array(
-						'file'=>$file,
-						'line'=>$line,
-						'data'=>$data,
-						'_GET'=>$_GET
-					),
-					'user_history'=>$_SESSION['history']
-				)
-			);
 		}
 		echo '<br><strong>Error: </strong>'.$message;
 		print_pre($data);
@@ -290,13 +216,7 @@ class database{
 				$print_pre['debug']=debug();
 				print_pre($print_pre);
 			}
-			return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-		}
-	}
-	#Restore
-	public function restore($files){
-		foreach((array) $files as $file){
-			$this->query(file_get_contents($file));
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
 		}
 	}
 	# Result Count
@@ -352,9 +272,9 @@ class database{
 		$sql="SELECT 1
 		FROM `information_schema`.`columns`
 		WHERE
-			`table_schema`	='".\addslashes($this->name)."' AND
-			`table_name`	='".\addslashes($table)."' AND
-			`column_name`	='".\addslashes($column)."'";
+			`table_schema`	='".addslashes($this->name)."' AND
+			`table_name`	='".addslashes($table)."' AND
+			`column_name`	='".addslashes($column)."'";
 		if($as_sql){
 			return $sql;
 		}
@@ -363,7 +283,7 @@ class database{
 	public function table_exists($table,$as_sql=false){
 		$sql="SELECT 1
 		FROM `information_schema`.`tables`
-		WHERE `table_schema`= '".\addslashes($this->name)."' AND `table_name`='".\addslashes($table)."'";
+		WHERE `table_schema`= '".addslashes($this->name)."' AND `table_name`='".\addslashes($table)."'";
 		if($as_sql){
 			return $sql;
 		}
