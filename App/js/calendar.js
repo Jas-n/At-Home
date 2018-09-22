@@ -13,7 +13,7 @@ var calendar={
 			var data=json.data;
 			var event={};
 			$('.schedule .loading').remove();
-			if(data.count){
+			if(data.count){ 
 				for(var i=0;i<data.rows.length;i++){
 					event=data.rows[i];
 					$('.schedule').append(`<div class="list-group-item event">
