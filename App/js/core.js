@@ -1,4 +1,5 @@
 var home={
+	loaded:[],
 	url:'https://home.jas-n.com/',
 	init:function(){
 		this.watch_links();
@@ -25,9 +26,35 @@ var home={
 			}
 		});*/
 	},
+	ajax:function(file,method,callback,data){
+		$.ajax({
+			dataType:'json',
+			type:"POST",
+			url:'https://home.jas-n.com/ajax.php',
+			data:{
+				class:file,
+				data:data,
+				method:method,
+				key:'b3de695507ba629509ef810d00ca6006'
+			},
+			success:function(json){
+				callback(json);
+			}
+		});
+	},
+	load_partial:function(partial){
+		$('main').load('partials/'+partial+'.html',function(){
+			if(home.loaded.indexOf(partial)===-1){
+				$('body').append('<script src="partials/'+partial+'.js"></script>');
+				home.loaded.push(partial);
+			}
+			window[partial].init();
+		});
+	},
 	watch_links:function(){
+		this.load_partial($('footer a:first-of-type').data('load'));
 		$('a').click(function(){
-			var partial=$(this).data('load');
+			home.load_partial($(this).data('load'));
 		});
 	}
 };

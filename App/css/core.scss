@@ -1,0 +1,26 @@
+@import "variables";
+@import "bootstrap/bootstrap";
+@import "fontawesome/fontawesome";
+@import "fontawesome/fa-brands";
+@import "fontawesome/fa-light";
+/*!
+ * App Core Styles
+*/
+footer{
+	color:#fff;
+	background:$blue;
+	position:fixed;
+	width: 100%;
+	height: 50px;
+	text-align:center;
+	.col{
+		cursor: pointer;
+		font-size:$spacer*1.5;
+		height: 100%;
+		padding:5px;
+	}
+}
+main{
+	margin-bottom:$footer-height;
+	padding:$spacer;
+}
