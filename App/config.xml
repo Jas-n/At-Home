@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
-	<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.jas-n.home" version="0.1.0">
+	<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.jas-n.home" version="0.2.1">
     <name>Jas-n Home</name>
     <description>
 		Stuff at Home
     </description>
-    <author href="http://formation.software" email="jas-n@outlook.com">
+    <author href="http://jas-n.com" email="jas-n@outlook.com">
         Jason Millis
     </author>
 	<preference name="android-build-tool" value="gradle" />
@@ -32,9 +32,4 @@
 	<icon src="icons/Android/Icon-72.png"	gap:platform="android" gap:density="hdpi" />
 	<icon src="icons/Android/Icon-96.png"	gap:platform="android" gap:density="xhdpi" />
 	<icon src="icons/Android/Icon-144.png"	gap:platform="android" gap:density="xxhdpi" />
-	
-	<access origin="*"/>
-    <plugin name="cordova-plugin-whitelist" version="1" />
-	<allow-navigation href="http://*/*" />
-	<allow-navigation href="https://*/*" />
 </widget>
