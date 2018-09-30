@@ -23,6 +23,9 @@ footer{
 		padding:5px;
 	}
 }
+.hidden{
+	display:none !important;
+}
 main{
 	margin-bottom:$footer-height;
 	padding:$spacer;

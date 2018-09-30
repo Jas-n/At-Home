@@ -1,4 +1,5 @@
 var home={
+	id:0,
 	loaded:[],
 	url:'https://home.jas-n.com/',
 	init:function(){
@@ -24,11 +25,18 @@ var home={
 		});
 	},
 	load_partial:function(partial,id){
+		if(id){
+			home.id=id;
+			$('main').attr('data-id',id);
+		}else{
+			home.id=0;
+			$('main').attr('data-id','');
+		}
 		$('main').load('partials/'+partial+'.html',function(){
+			$('main').attr('id',partial);
 			if(home.loaded.indexOf(partial)===-1){
 				$('head').append('<link rel="stylesheet" href="css/'+partial+'.css">');
 				$('body').append('<script src="js/'+partial+'.js"></script>');
-				$('main').attr('id',partial);
 				home.loaded.push(partial);
 			}
 			window[partial].init();
@@ -37,7 +45,7 @@ var home={
 	watch_links:function(){
 		this.load_partial($('footer a:first-of-type').data('load'));
 		$('body').on('click','a',function(){
-			home.load_partial($(this).data('load'));
+			home.load_partial($(this).data('load'),$(this).data('id'));
 		});
 	}
 };

@@ -20,7 +20,7 @@ if(!$_POST['method'] || !method_exists($class,$_POST['method'])){
 	));
 }
 if($return=$class->{$_POST['method']}($_POST['data'])){
-	if(is_array($return) && array_key_exists('status',$return)){
+	if(is_array($return) && array_key_exists('data',$return)){
 		json_return($return);
 	}else{
 		json_return(array(
@@ -31,6 +31,7 @@ if($return=$class->{$_POST['method']}($_POST['data'])){
 }else{
 	json_return(array(
 		'status'=>false,
-		'message'=>'There was an error processing the request'
+		'message'=>'There was an error processing the request',
+		'return'=>$return
 	));
 }
