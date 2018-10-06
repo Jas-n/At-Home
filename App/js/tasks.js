@@ -3,6 +3,7 @@ var tasks={
 	init:function(){
 		this.get_tasks(home.id);
 		if(!this.initiated){
+			this.watch_delete_task();
 			this.watch_new_task();
 			this.initiated=true;
 		}
@@ -36,16 +37,26 @@ var tasks={
 		if(task.data){
 			task=task.data;
 		}
-		if(task.children_count){
-			$('.new-task').before(`<a class="list-group-item task" data-load="tasks" data-id="`+task.id+`">
-				<h3>`+task.description+`</h3>
-			</a>`);
-		}else{
-			$('.new-task').before(`<div class="list-group-item task">
-				<h3>`+task.description+`</h3>
-			</div>`);
-		}
+		var task_html='<div class="list-group-item task" data-load="tasks" data-id="'+task.id+'">';
+			if(!Number(task.children_count)){
+				task_html+='<a class="btn btn-sm btn-danger float-right text-white js-delete-task"><i class="fal fa-times"></i></a>';
+			}
+			task_html+=`<h3>`+task.description+`</h3>
+		</div>`;
+		$('.new-task').before(task_html);
 		$('#new-task-field').val('');
+	},
+	watch_delete_task:function(){
+		$('main').on('click','.js-delete-task',function(e){
+			home.ajax('tasks','delete_task',function(data){
+				if(data.status){
+					$('.task[data-id="'+data.data+'"]').remove();
+				}
+			},{
+				id:$(e.target.parentNode).data('id')
+			});
+			return false;
+		});
 	},
 	watch_new_task:function(){
 		$('main').on('click','.js-add-task',function(){

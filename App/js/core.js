@@ -44,7 +44,7 @@ var home={
 	},
 	watch_links:function(){
 		this.load_partial($('footer a:first-of-type').data('load'));
-		$('body').on('click','a',function(){
+		$('body').on('click','[data-load]',function(){
 			home.load_partial($(this).data('load'),$(this).data('id'));
 		});
 	}

@@ -6,6 +6,9 @@
 /*!
  * App Core Styles
 */
+[data-load]{
+	cursor:pointer;
+}
 body{
 	background-color: $gray-200;
 }

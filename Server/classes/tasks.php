@@ -15,6 +15,11 @@
 		);
 		return $this->get_task(array('id'=>$db->insert_id()));
 	}
+	function delete_task($data){
+		global $db;
+		$db->query("DELETE FROM `tasks` WHERE `id`=?",$data['id']);
+		return $data['id'];
+	}
 	function get_task($data){
 		global $db;
 		$task=$db->get_row("SELECT * FROM `tasks` WHERE `id`=?",$data['id']);
@@ -25,7 +30,7 @@
 	}
 	function get_tasks($data=false){
 		global $db;
-		if($count=$db->result_count("FROM `tasks` WHERE `status`=0 AND `parent_id`=? ORDER BY `description`",$data['parent'])){
+		if($count=$db->result_count("FROM `tasks` WHERE `status`=0 AND `parent_id`=?",$data['parent'])){
 			$rows=$db->query(
 				"SELECT
 					`tasks`.*,
@@ -35,7 +40,7 @@
 				WHERE
 					`status`=0 AND
 					`parent_id`=?
-				ORDER BY `added` ASC
+				ORDER BY `description` ASC
 				LIMIT ".ITEMS_PER_PAGE,
 				$data['parent']
 			);
