@@ -12,6 +12,14 @@
 body{
 	background-color: $gray-200;
 }
+.breadcrumb{
+	[data-load]{
+		color:$primary;
+	}
+	.active{
+		cursor:default;
+	}
+}
 footer{
 	color:#fff;
 	background:$blue;

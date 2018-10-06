@@ -20,16 +20,17 @@
 		$db->query("DELETE FROM `tasks` WHERE `id`=?",$data['id']);
 		return $data['id'];
 	}
-	function get_task($data){
-		global $db;
-		$task=$db->get_row("SELECT * FROM `tasks` WHERE `id`=?",$data['id']);
-		$task['children']=$this->get_tasks($data['id']);
-		$task['children_count']=$task['children']['count']?$task['children']['count']:0;
-		$task['children_complete']=$task['children']['count']?array_sum(array_column($task['children']['rows'],'status')):0;
-		return $task;
-	}
 	function get_tasks($data=false){
 		global $db;
+		if($data['parent']){
+			$task=$db->get_row("SELECT * FROM `tasks` WHERE `id`=?",$data['parent']);
+			$parent=$task['parent_id'];
+			while($parent!=0){
+				$row=$db->get_row("SELECT `id`,`description` FROM `tasks` WHERE `id`=?",$parent);
+				$task['parents'][]=$row;
+				$parent=$row['parent_id'];
+			}
+		}
 		if($count=$db->result_count("FROM `tasks` WHERE `status`=0 AND `parent_id`=?",$data['parent'])){
 			$rows=$db->query(
 				"SELECT
@@ -47,7 +48,8 @@
 		}
 		return array(
 			'count'	=>$count,
-			'rows'	=>$rows
+			'rows'	=>$rows,
+			'task'	=>$task
 		);
 	}
 }

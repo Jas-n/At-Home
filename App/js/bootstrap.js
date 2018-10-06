@@ -34,6 +34,21 @@ var bootstrap={
 		'</div>';
 		return html;
 	},
+	breadcrumb:function(links){
+		if(!links.length){
+			return false;
+		}
+		var html=`<ol class="breadcrumb">`;
+			for(var i=0;i<links.length;i++){
+				if(i+1!==links.length){
+					html+='<li class="breadcrumb-item" data-id="'+links[i].id+'" data-load="'+links[i].load+'">'+links[i].name+'</li>';
+				}else{
+					html+='<li class="breadcrumb-item active">'+links[i].name+'</li>';
+				}
+			}
+		html+=`</ol>`;
+		return html;
+	},
 	pagination:function(count,link,page){
 		'use strict';
 		var out		='';

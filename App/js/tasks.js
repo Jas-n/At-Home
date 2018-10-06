@@ -26,6 +26,27 @@ var tasks={
 			var data=json.data;
 			$('.tasks .loading').remove();
 			$('.tasks .new-task').removeClass('hidden');
+			$('.breadcrumb').remove();
+			if(data.task){
+				$('h1').text(data.task.description);
+				var links=[];
+				if(data.task.parents){
+					var parents=data.task.parents;
+					for(var i=0;i<parents.length;i++){
+						links.push({
+							id:parents[i].id,
+							load:'tasks',
+							name:parents[i].description
+						});
+					}
+				}
+				links.push({
+					id:data.task.id,
+					load:'tasks',
+					name:data.task.description
+				});
+				$('h1').after(bootstrap.breadcrumb(links));
+			}
 			if(Number(data.count)){
 				for(var i=0;i<data.rows.length;i++){
 					tasks.render_task(data.rows[i]);
