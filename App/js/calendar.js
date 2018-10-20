@@ -16,10 +16,12 @@ var calendar={
 			if(data.count){ 
 				for(var i=0;i<data.rows.length;i++){
 					event=data.rows[i];
-					$('.schedule').append(`<div class="list-group-item event">
-						<h3>`+php.formatted_date(event.start)+` <small class="text-muted">`+event.name+`</small></h3>
-						<div class="description">`+event.description+`</div>
-					</div>`);
+					console.log(event);
+					var event_html=`<div class="list-group-item event">
+						<h3>`+php.formatted_date(event.start)+` <small class="text-muted">`+event.name+`</small></h3>`;
+						event_html+=`<div class="description">`+event.description+`</div>
+					</div>`;
+					$('.schedule').append(event_html);
 				}
 			}
 		}

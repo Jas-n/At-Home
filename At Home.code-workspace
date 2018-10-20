@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "App"
+		},
+		{
+			"path": "Server"
+		}
+	],
+	"settings": {
+		"liveSassCompile.settings.formats": [
+			{
+				"format": "compressed",
+				"extensionName": ".css",
+				"savePath": null
+			}
+		],
+		"liveServer.settings.multiRootWorkspaceName": "App"
+	}
+}
