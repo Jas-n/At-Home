@@ -1,7 +1,7 @@
 <?php class tasks{
 	function __construct(){
 	}
-	function add_task($data){
+	public function add_task($data){
 		global $db;
 		$db->query(
 			"INSERT INTO `tasks` (
@@ -15,12 +15,16 @@
 		);
 		return $this->get_task(array('id'=>$db->insert_id()));
 	}
-	function delete_task($data){
+	public function delete_task($data){
 		global $db;
 		$db->query("DELETE FROM `tasks` WHERE `id`=?",$data['id']);
 		return $data['id'];
 	}
-	function get_tasks($data=false){
+	public function get_task($id){
+		global $db;
+		return $db->get_row("SELECT * FROM `tasks` WHERE `id`=?",$id);
+	}
+	public function get_tasks($data=false){
 		global $db;
 		if($data['parent']){
 			$task=$db->get_row("SELECT * FROM `tasks` WHERE `id`=?",$data['parent']);

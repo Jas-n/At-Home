@@ -29,7 +29,10 @@ var tasks={
 			$('.breadcrumb').remove();
 			if(data.task){
 				$('h1').text(data.task.description);
-				var links=[];
+				var links=[{
+					load:'tasks',
+					name:'Tasks'
+				}];
 				if(data.task.parents){
 					var parents=data.task.parents;
 					for(var i=0;i<parents.length;i++){
@@ -60,7 +63,7 @@ var tasks={
 		}
 		var task_html='<div class="list-group-item task" data-load="tasks" data-id="'+task.id+'">';
 			if(!Number(task.children_count)){
-				task_html+='<a class="btn btn-sm btn-danger float-right text-white js-delete-task"><i class="fal fa-times"></i></a>';
+				task_html+='<a class="btn btn-sm btn-danger float-right text-white js-delete-task fal fa-times"></a>';
 			}
 			task_html+=`<h3>`+task.description+`</h3>
 		</div>`;
@@ -81,10 +84,13 @@ var tasks={
 	},
 	watch_new_task:function(){
 		$('main').on('click','.js-add-task',function(){
-			home.ajax('tasks','add_task',tasks.render_task,{
-				description:$('#new-task-field').val(),
-				parent:$('main').data('id')
-			});
+			var task=$('#new-task-field').val();
+			if(task){
+				home.ajax('tasks','add_task',tasks.render_task,{
+					description:$('#new-task-field').val(),
+					parent:$('main').data('id')
+				});
+			}
 		});
 	}
 };
