@@ -16,10 +16,14 @@ var calendar={
 			if(data.count){ 
 				for(var i=0;i<data.rows.length;i++){
 					event=data.rows[i];
-					console.log(event);
 					var event_html=`<div class="list-group-item event">
-						<h3>`+php.formatted_date(event.start)+` <small class="text-muted">`+event.name+`</small></h3>`;
-						event_html+=`<div class="description">`+event.description+`</div>
+						<h3>`+php.formatted_date(event.next)+` <small class="text-muted">`+event.name+`</small></h3>
+						<div class="description">`;
+							if(event.recurrence){
+								event_html+=home.ordinal(event.count)+` occurrence<br>`;
+							}
+							event_html+=event.description+
+						`</div>
 					</div>`;
 					$('.schedule').append(event_html);
 				}

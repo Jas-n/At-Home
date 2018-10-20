@@ -42,6 +42,20 @@ var home={
 			window[partial].init();
 		});
 	},
+	ordinal:function(number){
+		var j = number % 10,
+        k = number % 100;
+		if (j == 1 && k != 11) {
+			ordinal = "st";
+		}else if (j == 2 && k != 12) {
+			ordinal = "nd";
+		}else if (j == 3 && k != 13) {
+			ordinal = "rd";
+		}else{
+			ordinal = "th";
+		}
+		return number+ordinal;
+	},
 	watch_links:function(){
 		this.load_partial($('footer a:first-of-type').data('load'));
 		$('body').on('click','[data-load]',function(){

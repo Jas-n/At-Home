@@ -42,6 +42,7 @@ footer{
 main{
 	margin-bottom:$footer-height;
 	padding:$spacer;
+	> .btn,
 	> .list-group,
 	.shadow{
 		box-shadow:		$box-shadow;
