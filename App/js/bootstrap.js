@@ -16,16 +16,18 @@ var bootstrap={
 		'use strict';
 		var html='';
 		var data=[];
-		if(bootstrap.theme.indexOf(type)!==-1){
+		if(bootstrap.theme.indexOf(type)===-1){
 			type='primary';
 		}
-		if(args.data){
-			for(key in args.data){
-				data.push('data-'+key+'="'+args.data[key]+'"');
+		if(args){
+			if(args.data){
+				for(key in args.data){
+					data.push('data-'+key+'="'+args.data[key]+'"');
+				}
 			}
 		}
-		html+='<div class="alert alert-'+type+(args.class?' '+args.class:'')+(args.dismissible?' alert-dismissible fade show':'')+'"'+(args.data?' '+data.join(' '):'')+(args.id?' id="'+args.id+'"':'')+' role="alert">';
-			if(args.dismissible){
+		html+='<div class="alert alert-'+type+(args && args.class?' '+args.class:'')+(args && args.dismissible?' alert-dismissible fade show':'')+'"'+(args && args.data?' '+data.join(' '):'')+(args && args.id?' id="'+args.id+'"':'')+' role="alert">';
+			if(args && args.dismissible){
 				html+='<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
 					'<span aria-hidden="true">&times;</span>'+
 				'</button>';
@@ -41,6 +43,9 @@ var bootstrap={
 		var html=`<ol class="breadcrumb">`;
 			for(var i=0;i<links.length;i++){
 				if(i+1!==links.length){
+					if(!links[i].id){
+						links[i].id=0;
+					}
 					html+='<li class="breadcrumb-item" data-id="'+links[i].id+'" data-load="'+links[i].load+'">'+links[i].name+'</li>';
 				}else{
 					html+='<li class="breadcrumb-item active">'+links[i].name+'</li>';

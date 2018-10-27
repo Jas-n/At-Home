@@ -30,9 +30,12 @@
 			$task=$db->get_row("SELECT * FROM `tasks` WHERE `id`=?",$data['parent']);
 			$parent=$task['parent_id'];
 			while($parent!=0){
-				$row=$db->get_row("SELECT `id`,`description` FROM `tasks` WHERE `id`=?",$parent);
+				$row=$db->get_row("SELECT `id`,`description`,`parent_id` FROM `tasks` WHERE `id`=?",$parent);
 				$task['parents'][]=$row;
 				$parent=$row['parent_id'];
+			}
+			if($task['parents']){
+				$task['parents']=array_reverse($task['parents']);
 			}
 		}
 		if($count=$db->result_count("FROM `tasks` WHERE `status`=0 AND `parent_id`=?",$data['parent'])){

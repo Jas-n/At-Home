@@ -48,6 +48,7 @@ var tasks={
 					load:'tasks',
 					name:data.task.description
 				});
+				console.log(links);
 				$('h1').after(bootstrap.breadcrumb(links));
 			}
 			if(Number(data.count)){
@@ -88,7 +89,7 @@ var tasks={
 			if(task){
 				home.ajax('tasks','add_task',tasks.render_task,{
 					description:$('#new-task-field').val(),
-					parent:$('main').data('id')
+					parent:$('main').attr('data-id')
 				});
 			}
 		});

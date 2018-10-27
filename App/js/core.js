@@ -27,10 +27,10 @@ var home={
 	load_partial:function(partial,id){
 		if(id){
 			home.id=id;
-			$('main').attr('data-id',id);
+			$('main').attr('data-id',home.id);
 		}else{
 			home.id=0;
-			$('main').attr('data-id','');
+			$('main').attr('data-id',home.id);
 		}
 		$('main').load('partials/'+partial+'.html',function(){
 			$('main').attr('id',partial);
