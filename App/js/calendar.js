@@ -1,11 +1,11 @@
 var calendar={
 	init:function(){
 		this.render();
+		this.watch_new_event();
 	},
 	render:function(){
 		this.get_event_types();
 		this.get_schedule();
-		this.watch_new_event();
 	},
 	get_event_types:function(){
 		home.ajax('calendar','get_event_types',function(json){
