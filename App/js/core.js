@@ -1,9 +1,16 @@
 var home={
 	id:0,
+	is_app:false,
 	loaded:[],
 	url:'https://home.jas-n.com/',
 	init:function(){
+		if(home.is_app){
+			this.app_init();
+		}
 		this.watch_links();
+	},
+	app_init:function(){
+		console.log(cordova.file);
 	},
 	ajax:function(file,method,callback,data){
 		$.ajax({
@@ -39,6 +46,10 @@ var home={
 				$('body').append('<script src="js/'+partial+'.js"></script>');
 				home.loaded.push(partial);
 			}
+			if($('footer .col[data-load="'+partial+'"]').length){
+				$('footer .col').removeClass('active');
+				$('footer .col[data-load="'+partial+'"]').addClass('active');
+			}
 			window[partial].init();
 		});
 	},
@@ -64,6 +75,7 @@ var home={
 	}
 };
 if(typeof cordova!=='undefined'){
+	home.is_app=true;
 	document.addEventListener('deviceready',home.init,false);
 }else{
 	home.init();

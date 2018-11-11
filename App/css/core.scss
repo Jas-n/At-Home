@@ -1,6 +1,5 @@
 @import "app";
 @import "bootstrap/bootstrap";
-//@import "materialize/materialize";
 @import "fontawesome/fontawesome";
 @import "fontawesome/fa-brands";
 @import "fontawesome/fa-light";
@@ -23,7 +22,7 @@ body{
 }
 footer{
 	color:#fff;
-	background:$blue;
+	background:$orange;
 	position:fixed;
 	width: 100%;
 	height: 50px;
@@ -35,6 +34,9 @@ footer{
 		font-size:$spacer*1.5;
 		height: 100%;
 		padding:5px;
+		&.active{
+			border-bottom:2px solid $white;
+		}
 	}
 }
 .hidden{
@@ -48,5 +50,10 @@ main{
 	.shadow{
 		box-shadow:		$box-shadow;
 		border-width:	0;
+	}
+}
+nav{
+	&.page{
+		float:right
 	}
 }
