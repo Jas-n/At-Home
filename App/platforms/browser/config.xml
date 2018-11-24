@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.jas-n.home" version="0.7.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>At Home</name>
+    <description>Help around the house</description>
+    <author email="jas-n@jas-n.com" href="https://jas-n.com">Jas-n</author>
+    <content src="index.html" />
+    <access origin="https://home.jas-n.com" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="phonegap-version" value="cli-8.0.0" />
+</widget>

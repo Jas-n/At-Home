@@ -1,0 +1,46 @@
+<nav class="page">
+	<a class="btn btn-success text-white js-add-event"><i class="fal fa-plus" data-toggle="modal" data-target="#event_modal"></i></a>
+</nav>
+<h1>Calendar</h1>
+<div class="list-group schedule">
+	<div class="list-group-item loading bg-info text-white"><i class="fal fa-sync fa-spin"></i> Loading schedule&hellip;</div>
+</div>
+<div class="modal" id="event_modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Add Event</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="event_name">Name</label>
+					<input type="text" class="form-control" id="event-name" placeholder="Event Name">
+				</div>
+				<div class="form-group">
+					<label for="event_type">Type</label>
+					<select class="form-control" id="event-type">
+						<option value="">Select&hellip;</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="event-date">Start Date</label>
+					<input type="date" class="form-control" id="event-date">
+				</div>
+				<div class="form-group">
+					<label for="event-recurrence">Recurrence</label>
+					<select class="form-control" id="event-recurrence">
+						<option value="">Select&hellip;</option>
+						<option value="1">Yearly</option>
+					</select>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary js-save-event">Save</button>
+			</div>
+		</div>
+	</div>
+</div>
