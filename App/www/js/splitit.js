@@ -20,44 +20,43 @@ var splitit={
 				items=splitit.items[name];
 				i=0;
 				total=0;
-				if(!$('#'+name).length){
-					html+='<div class="'+name+'">'+
-						'<h3>'+name+'</h3>'+
-						'<div class="card shadow mb-3">'+
-							'<table class="table">'+
-								'<thead>'+
-									'<tr>'+
-										'<th>#</th>'+
-										'<th>Item</th>'+
-										'<th class="text-right">Cost</th>'+
-										'<th class="text-right">Quantity</th>'+
-										'<th class="text-right">Line</th>'+
-									'</tr>'+
-								'</thead>'+
-								'<tbody>';
-									for(item in items){
-										data=items[item];
-										html+='<tr>'+
-											'<td>'+(i+1)+'</td>'+
-											'<td>'+item+'</td>'+
-											'<td class="text-right">&pound;'+Number(data.cost).toFixed(2)+'</td>'+
-											'<td class="text-right">'+data.quantity+'</td>'+
-											'<td class="text-right">&pound;'+(data.cost*data.quantity).toFixed(2)+'</td>'+
-										'</tr>';
-										total+=data.cost*data.quantity;
-									}
-								html+='</tbody>'+
-								'<tfoot>'+
-									'<tr>'+
-										'<th class="text-right" colspan="4">Total</th>'+
-										'<th class="text-right">&pound;'+total.toFixed(2)+'</th>'+
-									'</tr>'+
-								'</tfoot>'+
-							'</table>'+
-						'</div>'+
-					'</div>';
-					console.log(items);
-				}
+				$('.'+name).remove()
+				html+='<div class="'+name+'">'+
+					'<h3>'+name+'</h3>'+
+					'<div class="card shadow mb-3">'+
+						'<table class="table">'+
+							'<thead>'+
+								'<tr>'+
+									'<th>#</th>'+
+									'<th>Item</th>'+
+									'<th class="text-right">Cost</th>'+
+									'<th class="text-right">Quantity</th>'+
+									'<th class="text-right">Line</th>'+
+								'</tr>'+
+							'</thead>'+
+							'<tbody>';
+								for(item in items){
+									data=items[item];
+									html+='<tr>'+
+										'<td>'+(i+1)+'</td>'+
+										'<td>'+item+'</td>'+
+										'<td class="text-right">&pound;'+Number(data.cost).toFixed(2)+'</td>'+
+										'<td class="text-right">'+data.quantity+'</td>'+
+										'<td class="text-right">&pound;'+(data.cost*data.quantity).toFixed(2)+'</td>'+
+									'</tr>';
+									total+=data.cost*data.quantity;
+								}
+							html+='</tbody>'+
+							'<tfoot>'+
+								'<tr>'+
+									'<th class="text-right" colspan="4">Total</th>'+
+									'<th class="text-right">&pound;'+total.toFixed(2)+'</th>'+
+								'</tr>'+
+							'</tfoot>'+
+						'</table>'+
+					'</div>'+
+				'</div>';
+				console.log(items);
 			}
 			$('.breakdown').prepend(html);
 		}
