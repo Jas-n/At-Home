@@ -1,56 +1,67 @@
+<nav class="page">
+	<a class="btn btn-primary text-white js-clear-items"><i class="fal fa-eraser"></i></a>
+</nav>
 <h1>Split It</h1>
-<h2>Items</h2>
-<div class="breakdown ml-3">
-	<h3>Add</h3>
-	<form class="card card-body mb-3 needs-validation shadow" novalidate>
-		<div class="form-group row">
-			<label class="col-sm-2" for="who">Name</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" id="who" placeholder="Enter name" required>
-				<div class="invalid-feedback">
-					A name is required
-				</div>
+<h2>Add</h2>
+<form class="card card-body mb-3 needs-validation shadow" novalidate>
+	<div class="form-group row">
+		<label class="col-sm-2" for="who">Name</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="who" placeholder="Enter name" required>
+			<div class="invalid-feedback">
+				A name is required
 			</div>
 		</div>
-		<div class="form-group row">
-			<label class="col-sm-2" for="what">Item</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" id="what" placeholder="Enter item" required>
-				<div class="invalid-feedback">
-					An item name is required
-				</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2" for="what">Item</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="what" placeholder="Enter item" required>
+			<div class="invalid-feedback">
+				An item name is required
 			</div>
 		</div>
-		<div class="form-group row">
-			<label class="col-sm-2" for="cost">Cost</label>
-			<div class="input-group col-sm-10">
-				<div class="input-group-prepend">
-					<span class="input-group-text" id="basic-addon3">&pound;</span>
-				</div>
-				<input type="text" class="form-control" id="cost" aria-describedby="basic-addon3" required>
-				<div class="invalid-feedback">
-					A cost is required
-				</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2" for="cost">Cost</label>
+		<div class="input-group col-sm-10">
+			<div class="input-group-prepend">
+				<span class="input-group-text" id="basic-addon3">&pound;</span>
+			</div>
+			<input type="text" class="form-control" id="cost" aria-describedby="basic-addon3" required>
+			<div class="invalid-feedback">
+				A cost is required
 			</div>
 		</div>
-		<div class="form-group row">
-			<label class="col-sm-2" for="quantity">Quantity</label>
-			<div class="col-sm-10">
-				<input type="number" class="form-control" id="quantity" placeholder="Enter quantity" value="1" required>
-				<div class="invalid-feedback">
-					A quantity is required
-				</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2" for="quantity">Quantity</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="quantity" placeholder="Enter quantity" value="1" required>
+			<div class="invalid-feedback">
+				A quantity is required
 			</div>
 		</div>
-		<p class="text-center"><button class="btn btn-success text-white" type="submit">Add</button></p>
-	</form>
-</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-2" for="discountable">Discountable</label>
+		<div class="col-sm-10">
+			<div class="custom-control custom-checkbox">
+				<input type="checkbox" class="custom-control-input" id="discountable">
+				<label class="custom-control-label" for="discountable">Yes</label>
+			</div>
+		</div>
+	</div>
+	<p class="text-center"><button class="btn btn-success text-white" type="submit">Add</button></p>
+</form>
+<h2>Breakdown</h2>
+<div class="breakdown"></div>
 <h2>Payment</h2>
 <div class="card">
 	<table class="table">
 		<tr>
 			<th>Sub-total</th>
-			<td class="sub-total">£0.00</td>
+			<td class="text-right sub-total">£0.00</td>
 		</tr>
 		<tr>
 			<th>Discount Percent</th>
@@ -66,19 +77,23 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Applies Before VAT?</th>
+			<th>Discount All</th>
 			<td>
 				<div class="form-group">
 					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="before-vat">
-						<label class="custom-control-label" for="before-vat">Yes</label>
+						<input type="checkbox" class="custom-control-input" id="discount-all">
+						<label class="custom-control-label" for="discount-all">Yes</label>
 					</div>
 				</div>
 			</td>
 		</tr>
 		<tr>
+			<th>Discount Value</th>
+			<td class="text-right discount-value">£0.00</td>
+		</tr>
+		<tr>
 			<th>Total</th>
-			<td class="total">£0.00</td>
+			<td class="text-right total">£0.00</td>
 		</tr>
 	</table>
 </div>
