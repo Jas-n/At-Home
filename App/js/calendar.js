@@ -1,7 +1,11 @@
 var calendar={
+	initiated:false,
 	init:function(){
 		this.render();
-		this.watch_new_event();
+		if(!this.initiated){
+			this.watch_new_event();
+			this.initiated=true;
+		}
 	},
 	render:function(){
 		this.get_event_types();

@@ -45,7 +45,10 @@
 				WHERE
 					`start` > ? OR
 					`recurrence` <> 0
-				ORDER BY `start` ASC
+				ORDER BY
+					YEAR(`next`),
+					MONTH(`next`),
+					DAY(`next`)
 				LIMIT ".ITEMS_PER_PAGE,
 				array(
 					date('Y-m-d H:i:s')
