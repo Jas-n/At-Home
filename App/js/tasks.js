@@ -1,5 +1,6 @@
 var tasks={
 	initiated:false,
+	name:'Tasks',
 	init:function(){
 		this.get_tasks(home.id);
 		if(!this.initiated){
@@ -62,7 +63,7 @@ var tasks={
 		if(task.data){
 			task=task.data;
 		}
-		var task_html='<div class="list-group-item task" data-load="tasks" data-id="'+task.id+'">';
+		var task_html='<div class="card task" data-load="tasks" data-id="'+task.id+'">';
 			if(!Number(task.children_count)){
 				task_html+='<a class="btn btn-sm btn-danger float-right text-white js-delete-task fal fa-times"></a>';
 			}

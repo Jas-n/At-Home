@@ -9,8 +9,20 @@
 [data-load]{
 	cursor:pointer;
 }
-body{
-	background-color: $gray-200;
+.hero{
+	background-position:top;
+	background-repeat: no-repeat;
+	background-size: contain;
+	mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+	position:fixed;
+	width:100%;
+	z-index:-1;
+	&[data-page="apps"]{
+		background-image:url('../images/apps.jpeg');
+	}
+	&[data-page="calendar"]{
+		background-image:url('../images/calendar.jpeg');
+	}
 }
 .breadcrumb{
 	[data-load]{
@@ -20,9 +32,18 @@ body{
 		cursor:default;
 	}
 }
+.card{
+	background:#021F59;
+	border-top:3px solid #FFB00D !important;
+	color:$white !important;
+	display:block;
+	margin-bottom:$spacer/2;
+	padding:$spacer/2;
+}
 footer{
-	color:#fff;
-	background:$orange;
+	color:$gray-600;
+	background:#021F59;
+	bottom:0;
 	position:fixed;
 	width: 100%;
 	height: 50px;
@@ -34,27 +55,53 @@ footer{
 		font-size:$spacer*1.5;
 		height: 100%;
 		padding:5px;
-		&.active{
-			border-bottom:2px solid $white;
+		&.active,
+		&:hover{
+			color:#fff !important;
 		}
 	}
+}
+h1,
+h2{
+	color:$white;
+	font-weight:normal;
+}
+header{
+	padding:$spacer*6 $spacer $spacer*3;
 }
 .hidden{
 	display:none !important;
 }
 main{
 	margin-bottom:$footer-height;
+	margin-top:$spacer*-2;
 	padding:$spacer;
-	> .btn,
-	> .card,
-	> .list-group,
+	.card,
+	.list-group,
 	.shadow{
 		box-shadow:		$box-shadow;
 		border-width:	0;
 	}
 }
+.modal-content{
+	color:$white;
+	.close{
+		color:$white;
+	}
+}
 nav{
 	&.page{
-		float:right
+		position:fixed;
+		right:0;
+		top:0;
+		z-index:3;
+		a{
+			border-radius:0;
+			padding:$spacer*.75;
+			i{
+				text-align:center;
+				width:$spacer*1.25;
+			}
+		}
 	}
 }

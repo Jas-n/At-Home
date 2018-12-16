@@ -3,6 +3,7 @@ var splitit={
 	discount_all:false,
 	initiated:	false,
 	items:		{},
+	name:		'Split It',
 	init:function(){
 		if(!this.initiated){
 			this.watch_clear();

@@ -1,12 +1,9 @@
 {
 	"folders": [
 		{
-			"path": "App"
-		},
-		{
-			"path": "Server"
+			"path": "."
 		}
-	],
+	]
 	"settings": {
 		"liveSassCompile.settings.formats": [
 			{

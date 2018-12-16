@@ -1,0 +1,11 @@
+@import "app";
+#apps{
+	.card{
+		text-align:center;
+		i{
+			display:block;
+			font-size:$spacer*3;
+			margin-bottom:$spacer/2;
+		}
+	}
+}

@@ -1,5 +1,6 @@
 var calendar={
-	initiated:false,
+	initiated:	false,
+	name:		'Calendar',
 	init:function(){
 		this.render();
 		if(!this.initiated){
@@ -31,7 +32,7 @@ var calendar={
 					var events=data.rows[date];
 					for(var i=0;i<events.length;i++){
 						event=events[i];
-						var event_html=`<div class="list-group-item event">
+						var event_html=`<div class="card event">
 							<h3>`+php.formatted_date(event.next)+` <small class="text-muted">`+event.name+`</small></h3>
 							<div class="description">`;
 								if(event.recurrence){
