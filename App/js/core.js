@@ -3,6 +3,7 @@ var home={
 	is_app:false,
 	loaded:[],
 	url:'https://home.jas-n.com/',
+	user:0,
 	init:function(){
 		if(home.is_app){
 			this.app_init();
@@ -79,8 +80,17 @@ var home={
 		}
 		return number+ordinal;
 	},
+	set_colour:function(user){
+		var colour='ffB00D';
+		if(user==1){
+			colour='6f42c1';
+		}else if(user==2){
+			colour='007bff';
+		}
+		document.documentElement.style.setProperty('--border-color','#'+colour);
+	},
 	watch_links:function(){
-		this.load_partial('apps');
+		this.load_partial('login');
 		$('body').on('click','[data-load]',function(){
 			home.load_partial($(this).data('load'),$(this).data('id'));
 		});

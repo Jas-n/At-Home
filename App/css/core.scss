@@ -1,11 +1,14 @@
 @import "app";
 @import "bootstrap/bootstrap";
 @import "fontawesome/fontawesome";
-@import "fontawesome/fa-brands";
-@import "fontawesome/fa-light";
+@import "fontawesome/brands";
+@import "fontawesome/light";
 /*!
  * App Core Styles
 */
+:root{
+	--border-color:#FFB00D;
+}
 [data-load]{
 	cursor:pointer;
 }
@@ -34,11 +37,40 @@
 }
 .card{
 	background:#021F59;
-	border-top:3px solid #FFB00D !important;
+	border-top:3px solid var(--border-color) !important;
 	color:$white !important;
 	display:block;
 	margin-bottom:$spacer/2;
 	padding:$spacer/2;
+	&.icon{
+		text-align:center;
+		i{
+			display:block;
+			font-size:$spacer*2.5;
+			margin-bottom:$spacer*.25;
+			padding:$spacer*.25 0;
+		}
+	}
+	&.js-login{
+		background-position:center;
+		background-size:cover;
+		font-weight:500;
+		padding:$spacer*6 0;
+		&[data-id="1"]{
+			background-image: url('../images/charlotte.jpeg');
+			border-top:3px solid var(--border-color) !important; 
+			color:$purple !important;
+		}
+		&[data-id="2"]{
+			background-image: url('../images/jason.jpeg');
+			border-top:3px solid var(--border-color) !important;
+			color:$blue !important;
+		}
+		span{
+			background:rgba(255,255,255,.33);
+			padding:0 $spacer/2;
+		}
+	}
 }
 footer{
 	color:$gray-600;

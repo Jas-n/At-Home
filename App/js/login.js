@@ -1,0 +1,20 @@
+var login={
+	name:'Login',
+	init:function(){
+		home.user=localStorage.getItem('user');
+		if(home.user){
+			home.set_colour(home.user);
+			$('footer').removeClass('hidden');
+			home.set_colour(home.user);
+			home.load_partial('apps');
+		}else{
+			$('.js-login').click(function(){
+				home.user=this.dataset.id;
+				localStorage.setItem('user',home.user);
+				$('footer').removeClass('hidden');
+				home.set_colour(home.user);
+				home.load_partial('apps');
+			});
+		}
+	}
+};

@@ -1,4 +1,4 @@
-var calendar={
+var fuel={
 	initiated:	false,
 	name:		'Fuel Log',
 	init:function(){

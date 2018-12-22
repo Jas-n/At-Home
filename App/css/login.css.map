@@ -2,7 +2,7 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "apps.scss",
+        "login.scss",
         "_app.scss",
         "_variables.scss",
         "bootstrap/_functions.scss",
@@ -40,5 +40,5 @@
         "bootstrap/mixins/_float.scss"
     ],
     "names": [],
-    "file": "apps.css"
+    "file": "login.css"
 }
