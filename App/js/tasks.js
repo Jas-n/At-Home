@@ -27,7 +27,6 @@ var tasks={
 			var data=json.data;
 			$('.tasks .loading').remove();
 			$('.tasks .new-task').removeClass('hidden');
-			$('.breadcrumb').remove();
 			if(data.task){
 				$('h1').text(data.task.description);
 				var links=[{

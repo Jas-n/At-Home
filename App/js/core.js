@@ -41,6 +41,7 @@ var home={
 			$('main').attr('data-id',home.id);
 		}
 		$('main').load('partials/'+partial+'.html',function(){
+			$('.breadcrumb').remove();
 			$('main').attr('id',partial);
 			$('.hero').attr('src','images/'+partial+'.jpeg');
 			if(home.loaded.indexOf(partial)===-1){

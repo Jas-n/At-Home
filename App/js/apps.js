@@ -5,6 +5,7 @@ var apps={
 			home.user=0;
 			localStorage.removeItem('user');
 			home.set_colour();
+			$('footer').addClass('hidden');
 			home.load_partial('login');
 		});
 	}
