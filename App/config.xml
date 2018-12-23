@@ -1,4 +1,4 @@
-<!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
+<!-- config.xml reference: https://cordova.apache.org/docs/en/latest/config_ref/index.html -->
 <widget xmlns		="http://www.w3.org/ns/widgets"
         xmlns:gap	="http://phonegap.com/ns/1.0"
         id			="com.jas-n.home"
