@@ -29,7 +29,7 @@
 }
 .breadcrumb{
 	[data-load]{
-		color:$primary;
+		color:var(--border-color);
 	}
 	.active{
 		cursor:default;
@@ -135,5 +135,17 @@ nav{
 				width:$spacer*1.25;
 			}
 		}
+	}
+}
+%tab{
+	display:inline-block;
+	margin-right:$spacer/3;
+	vertical-align:top;
+}
+@for $i from 1 through 10{
+	// Bootstrap includes 50% and 100%
+	.tab-#{$i}{
+		@extend %tab;
+		width:#{$spacer * $i} !important;
 	}
 }
