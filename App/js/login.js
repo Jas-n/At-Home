@@ -25,7 +25,6 @@ var login={
 				}
 			}
 			home.load_partial('apps');
-			home.load_partial('w_guests');
 		}else{
 			$('.js-login').click(function(){
 				home.user=this.dataset.id;
