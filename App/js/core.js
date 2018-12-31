@@ -2,9 +2,38 @@ var home={
 	id:0,
 	is_app:false,
 	loaded:[],
+	menu:{
+		calendar:{
+			icon:'calendar-alt',
+			name:'Calendar'
+		},
+		fuel:{
+			icon:'gas-pump',
+			name:'Fuel Log'
+		},
+		tasks:{
+			icon:'tasks',
+			name:'Lists'
+		},
+		splitit:{
+			icon:'money-bill',
+			name:'Split It'
+		},
+		wedding:{
+			icon:'ring',
+			name:'Wedding'
+		}
+	},
+	popular:{},
 	url:'https://home.jas-n.com/',
 	user:0,
 	init:function(){
+		if(popular=localStorage.getItem('popular')){
+			popular=JSON.parse(popular);
+			for(var i=0;i<popular.length;i++){
+				home.popular[popular[i][0]]=popular[i][1];
+			}
+		}
 		if(home.is_app){
 			this.app_init();
 		}
@@ -52,6 +81,20 @@ var home={
 			if($('footer .col[data-load="'+partial+'"]').length){
 				$('footer .col').removeClass('active');
 				$('footer .col[data-load="'+partial+'"]').addClass('active');
+				if(partial!=='apps'){
+					if(!home.popular[partial]){
+						home.popular[partial]=0;
+					}
+					home.popular[partial]++;
+					var sortable = [];
+					for (var part in home.popular) {
+						sortable.push([part,home.popular[part]]);
+					}
+					sortable.sort(function(a, b) {
+						return b[1] - a[1];
+					});
+					localStorage.setItem('popular',JSON.stringify(sortable))
+				}
 			}
 			if(typeof window[partial].init!=='undefined'){
 				window[partial].init();

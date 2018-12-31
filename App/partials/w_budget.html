@@ -1,0 +1,53 @@
+<nav class="page">
+	<a class="btn btn-secondary text-white" data-load="wedding"><i class="fal fa-ring"></i></a>
+	<a class="btn btn-success text-white js-add-budget" data-toggle="modal" data-target="#budget_modal"><i class="fal fa-plus"></i></a>
+</nav>
+<h2>Summary</h2>
+<div class="card">
+	<p><strong class="tab-4">In</strong><span class="float-right summary-in"></span></p>
+	<p><strong class="tab-4">Out</strong><span class="float-right summary-out"></span></p>
+	<p><strong class="tab-4">Balance</strong><span class="float-right summary-total"></span></p>
+</div>
+<h2>In</h2>
+<div class="budget-in"></div>
+<h2>Out</h2>
+<div class="budget-out"></div>
+<div class="modal" id="budget_modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Add Budget Item</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="event_name">Name</label>
+					<input type="text" class="form-control" id="budget-name" placeholder="Name" required>
+				</div>
+				<div class="form-group">
+					<label for="budget-type">Type</label>
+					<select class="form-control" id="budget-type" required>
+						<option value="">Select&hellip;</option>
+						<option value="1">In</option>
+						<option value="2">Out</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="budget-value">Value</label>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+						<span class="input-group-text" id="budget-value-pre">&pound;</span>
+						</div>
+						<input type="number" class="form-control" id="budget-value" aria-describedby="budget-value-pre" placeholder="Item Value" step="any" required>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-success js-save-budget">Save</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -35,12 +35,15 @@
 		cursor:default;
 	}
 }
-.card{
+.card,
+.table{
 	background:#021F59;
 	border-top:3px solid var(--border-color) !important;
 	color:$white !important;
-	display:block;
 	margin-bottom:$spacer/2;
+}
+.card{
+	display:block;
 	padding:$spacer/2;
 	&.icon{
 		text-align:center;
