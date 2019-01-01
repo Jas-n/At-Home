@@ -23,11 +23,12 @@
 				'adults'	=>$db->result_count("FROM `w_guests` WHERE `type`=?",1),
 				'children'	=>$db->result_count("FROM `w_guests` WHERE `type`=?",2),
 				'ceremony'	=>$db->result_count("FROM `w_guests` WHERE `time`=?",1),
-				'evening'	=>$db->result_count("FROM `w_guests` WHERE `time`=?",2),
+				'evening'	=>0,
 				'total'=>0
 			)
 		);
 		$return['totals']['total']=sizeof($return['guests']);
+		$return['totals']['evening']=$return['totals']['total'];
 		return $return;
 	}
 }
