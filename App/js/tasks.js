@@ -1,6 +1,6 @@
 var tasks={
 	initiated:false,
-	name:'Tasks',
+	name:'Lists',
 	init:function(){
 		this.get_tasks(home.id);
 		if(!this.initiated){
@@ -31,7 +31,7 @@ var tasks={
 				$('h1').text(data.task.description);
 				var links=[{
 					load:'tasks',
-					name:'Tasks'
+					name:tasks.name
 				}];
 				if(data.task.parents){
 					var parents=data.task.parents;

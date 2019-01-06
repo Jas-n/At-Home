@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AACA,AACC,QADO,CACP,CAAC,AAAA,CACA,aAAa,CAAC,CAAC,CACf",
     "sources": [
         "wedding.scss",
         "_app.scss",
