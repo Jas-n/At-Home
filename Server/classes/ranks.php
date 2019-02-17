@@ -28,7 +28,7 @@
 			WHERE `id`=?",
 			$user
 		);
-		$rank['percent']=number_format($rank['points']/$rank['next_rank_points']*100,1);
+		$rank['percent']=number_format($rank['points']/$rank['next_rank_points']-1*100,1);
 		return $rank;
 	}
 }

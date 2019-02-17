@@ -55,8 +55,10 @@ var home={
 				user:home.user
 			},
 			success:function(json){
-				localStorage.setItem('ranks',JSON.stringify(json.ranks));
-				home.set_rank(json.ranks);
+				if(json.ranks){
+					localStorage.setItem('ranks',JSON.stringify(json.ranks));
+					home.set_rank();
+				}
 				callback(json);
 			},
 			error: function (json) {
@@ -137,8 +139,9 @@ var home={
 		document.documentElement.style.setProperty('--border-color','#'+colour);
 	},
 	set_rank:function(){
-		if(ranks=localStorage.getItem('ranks')){
-			ranks=JSON.parse(ranks);
+		ranks=localStorage.getItem('ranks');
+		if(ranks){
+			ranks	=JSON.parse(ranks);
 			percent	=ranks.percent;
 			rank	=ranks.rank;
 		}else{

@@ -13,8 +13,9 @@
 				date('Y-m-d H:i:s')
 			)
 		);
+		$task_id=$db->insert_id();
 		$ranks->increment();
-		return $this->get_task(array('id'=>$db->insert_id()));
+		return $this->get_task(array('id'=>$task_id));
 	}
 	public function delete_task($data){
 		global $db,$ranks;
