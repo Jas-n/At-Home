@@ -51,9 +51,12 @@ var home={
 				class:file,
 				data:data,
 				method:method,
-				key:'b3de695507ba629509ef810d00ca6006'
+				key:'b3de695507ba629509ef810d00ca6006',
+				user:home.user
 			},
 			success:function(json){
+				localStorage.setItem('ranks',JSON.stringify(json.ranks));
+				home.set_rank(json.ranks);
 				callback(json);
 			},
 			error: function (json) {
@@ -132,6 +135,18 @@ var home={
 			colour='007bff';
 		}
 		document.documentElement.style.setProperty('--border-color','#'+colour);
+	},
+	set_rank:function(){
+		if(ranks=localStorage.getItem('ranks')){
+			ranks=JSON.parse(ranks);
+			percent	=ranks.percent;
+			rank	=ranks.rank;
+		}else{
+			percent	=0;
+			rank	=0;
+		}
+		$('footer .rank').text(rank);
+		document.documentElement.style.setProperty('--percent',percent+'%');
 	},
 	watch_links:function(){
 		this.load_partial('login');

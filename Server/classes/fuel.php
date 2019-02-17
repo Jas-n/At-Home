@@ -2,7 +2,7 @@
 	function __construct(){
 	}
 	public function add_fuel($data){
-		global $db;
+		global $db,$ranks;
 		$db->query(
 			"INSERT INTO `fuel` (
 				`user`,	`date`,`mileage`,`per_litre`,`cost`,
@@ -18,6 +18,7 @@
 				$data['litres'],
 			)
 		);
+		$ranks->increment();
 		return $this->get_fuel(array('user'=>$data['user']));
 	}
 	public function get_fuel($data=false){

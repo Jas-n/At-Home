@@ -1,5 +1,6 @@
 <?php header('Access-Control-Allow-Origin: *');
 include('./init.php');
+$user_id=$_POST['user'];
 if(!$_POST['key'] || $_POST['key']!='b3de695507ba629509ef810d00ca6006'){
 	json_return(array(
 		'status'=>false,
@@ -25,7 +26,8 @@ if($return=$class->{$_POST['method']}($_POST['data'])){
 	}else{
 		json_return(array(
 			'status'=>true,
-			'data'=>$return
+			'data'=>$return,
+			'ranks'=>$ranks->get_rank($_POST['user'])
 		));
 	}
 }else{

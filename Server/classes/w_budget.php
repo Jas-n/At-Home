@@ -2,7 +2,7 @@
 	function __construct(){
 	}
 	public function add_budget($data){
-		global $db;
+		global $db,$ranks;
 		$db->query(
 			"INSERT INTO `w_budget` (
 				`name`,`type`,`value`
@@ -13,6 +13,7 @@
 				$data['value']
 			)
 		);
+		$ranks->increment();
 		return $this->get_budget();
 	}
 	public function get_budget(){

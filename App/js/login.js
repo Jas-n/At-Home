@@ -24,6 +24,9 @@ var login={
 					}
 				}
 			}
+			// Calculate Rank
+			$('footer').append('<span class="col rank">0</span>');
+			home.set_rank();
 			home.load_partial('apps');
 		}else{
 			$('.js-login').click(function(){

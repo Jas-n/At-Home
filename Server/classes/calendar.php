@@ -2,7 +2,7 @@
 	function __construct(){
 	}
 	function add_event($data){
-		global $db;
+		global $db,$ranks,$user_id;
 		$db->query(
 			"INSERT INTO `events` (
 				`event_type_id`,`start`,`end`,`recurrence`,`name`,
@@ -19,6 +19,7 @@
 				date('Y-m-d H:i:s')
 			)
 		);
+		$ranks->increment();
 	}
 	function get_event_types(){
 		global $db;

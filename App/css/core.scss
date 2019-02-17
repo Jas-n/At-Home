@@ -8,6 +8,7 @@
 */
 :root{
 	--border-color:#FFB00D;
+	--percent:0%;
 }
 [data-load]{
 	cursor:pointer;
@@ -93,6 +94,18 @@ footer{
 		&.active,
 		&:hover{
 			color:#fff !important;
+		}
+	}
+	.rank{
+		cursor:default;
+		&::after{
+			background-color: var(--border-color);
+			bottom:0;
+			content:'';
+			height:3px;
+			left:0;
+			position: absolute;
+			width:var(--percent);
 		}
 	}
 }

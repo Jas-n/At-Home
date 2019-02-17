@@ -2,7 +2,7 @@
 	function __construct(){
 	}
 	public function add_guest($data){
-		global $db;
+		global $db,$ranks;
 		$db->query(
 			"INSERT INTO `w_guests` (
 				`name`,`type`,`time`
@@ -13,6 +13,7 @@
 				$data['time']
 			)
 		);
+		$ranks->increment();
 		return $this->get_guests();
 	}
 	public function get_guests(){

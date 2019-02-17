@@ -2,7 +2,7 @@
 	function __construct(){
 	}
 	public function add_task($data){
-		global $db;
+		global $db,$ranks;
 		$db->query(
 			"INSERT INTO `tasks` (
 				`parent_id`,`description`,`added`
@@ -13,11 +13,13 @@
 				date('Y-m-d H:i:s')
 			)
 		);
+		$ranks->increment();
 		return $this->get_task(array('id'=>$db->insert_id()));
 	}
 	public function delete_task($data){
-		global $db;
+		global $db,$ranks;
 		$db->query("DELETE FROM `tasks` WHERE `id`=?",$data['id']);
+		$ranks->increment();
 		return $data['id'];
 	}
 	public function get_task($id){
