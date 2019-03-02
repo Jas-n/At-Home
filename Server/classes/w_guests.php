@@ -25,10 +25,10 @@
 				'children'	=>$db->result_count("FROM `w_guests` WHERE `type`=?",2),
 				'ceremony'	=>$db->result_count("FROM `w_guests` WHERE `time`=?",1),
 				'evening'	=>0,
-				'total'=>0
+				'total'		=>0
 			)
 		);
-		$return['totals']['total']=sizeof($return['guests']);
+		$return['totals']['total']	=sizeof($return['guests']);
 		$return['totals']['evening']=$return['totals']['total'];
 		return $return;
 	}
