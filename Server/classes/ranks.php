@@ -18,6 +18,7 @@
 			"SELECT
 				`users`.`points`,
 				(SELECT `rank` FROM `ranks` WHERE `points`<=`users`.`points` ORDER BY `rank` DESC LIMIT 1) as `rank`,
+				(SELECT `points` FROM `ranks` WHERE `points`<=`users`.`points` ORDER BY `rank` DESC LIMIT 1) as `this_rank_points`,
 				(
 					SELECT `points` FROM `ranks` WHERE `rank`=(
 						IF(
@@ -31,7 +32,9 @@
 			WHERE `id`=?",
 			$user
 		);
-		$rank['percent']=number_format($rank['points']/$rank['next_rank_points']*100,1);
+		$diff=$rank['next_rank_points']-1-$rank['this_rank_points'];
+		$points=$rank['next_rank_points']-$rank['points'];
+		$rank['percent']=number_format($points/$diff*100,1);
 		return $rank;
 	}
 	private function add_rank(){
