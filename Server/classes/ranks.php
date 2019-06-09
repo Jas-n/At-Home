@@ -32,9 +32,12 @@
 			WHERE `id`=?",
 			$user
 		);
-		$diff=$rank['next_rank_points']-1-$rank['this_rank_points'];
-		$points=$rank['next_rank_points']-$rank['points'];
-		$rank['percent']=number_format($points/$diff*100,1);
+		$max	=$rank['next_rank_points']-1;
+		$min	=$rank['this_rank_points'];
+		$diff	=$max-$min;
+		$adjust	=$rank['points']-$min;
+		$percent=$adjust/$diff*100;
+		$rank['percent']=number_format($percent,1);
 		return $rank;
 	}
 	private function add_rank(){
