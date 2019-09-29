@@ -49,3 +49,18 @@ function print_pre($expression,$return=false){
 		echo $out;
 	}
 }
+# Returns a date reformated fron SQL
+# Updated 02/11/2018 16:50
+function format_date($date_from_sql=NULL){
+	if($date_from_sql===NULL){
+		$time=time();
+	}elseif(!is_numeric($date_from_sql)){
+		$time=strtotime($date_from_sql);
+	}else{
+		$time=$date_from_sql;
+	}
+	if($time<=0){
+		return false;
+	}
+	return date('j M Y',$time);
+}

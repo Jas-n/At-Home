@@ -2,8 +2,26 @@ var apps={
 	name:'Apps',
 	init:function(){
 		for(part in home.menu){
-			$('#apps').append('<a class="card icon" data-load="'+part+'"><i class="fal fa-'+home.menu[part].icon+'"></i>'+home.menu[part].name+'</a>');
+			$('#apps').append(
+				'<div class="card icon" data-load="'+part+'">'+
+					'<div class="title">'+
+						'<i class="fal fa-'+home.menu[part].icon+'"></i>'+
+						home.menu[part].name+
+					'</div>'+
+					'<div class="details">'+
+					'</div>'+
+				'</div>'
+			);
 		}
+		home.ajax(
+			'app',
+			'app_details',
+			function(json){
+				for(app in json.data){
+					$('.card[data-load="'+app+'"] .details').html(json.data[app]);
+				}
+			}
+		);
 		$('.js-log-out').click(function(){
 			home.user=0;
 			localStorage.removeItem('user');
