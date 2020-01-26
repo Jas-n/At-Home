@@ -15,7 +15,7 @@ var t = Date.parse(wedding.date) - Date.parse(new Date());
   var seconds = Math.floor( (t/1000) % 60 );
   var minutes = Math.floor( (t/1000/60) % 60 );
   var hours = Math.floor( (t/(1000*60*60)) % 24 );
-  var days = Math.floor( t/(1000*60*60*24) );
+  var days = Math.floor( t/(1000*60*60*24) % 7);
 var weeks = Math.floor( t/(1000*60*60*24*7) );
 $('.formatted').text('Less than '+weeks+'w, '+days+'d, '+hours+'h');
 	}
