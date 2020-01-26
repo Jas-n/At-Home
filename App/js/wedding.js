@@ -1,5 +1,5 @@
 var wedding={
-	date:'2020-10-10',
+	date:'2020-10-10 15:00:00',
 	name:'Wedding',
 	init:function(){
 		var wd_seconds=php.strtotime(wedding.date);
@@ -8,7 +8,8 @@ var wedding={
 		var minutes	=seconds/60;
 		var hours	=minutes/60;
 		var days	=Math.ceil(hours/24);
-		$('.date').text('Less than '+days+' days');
-		$('.days').text(php.date('d/m/Y',php.strtotime(wedding.date)));
+		$('.days').text('Less than '+days+' days');
+		$('.formatted').text('Less than '+days+' days, '+hours+' hours');
+		$('.date').text(php.date('d/m/Y',php.strtotime(wedding.date)));
 	}
 };
