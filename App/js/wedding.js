@@ -11,5 +11,10 @@ var wedding={
 		$('.days').text('Less than '+days+' days');
 		$('.formatted').text('Less than '+days+' days, '+hours+' hours');
 		$('.date').text(php.date('d/m/Y',php.strtotime(wedding.date)));
+var t = Date.parse(wedding.date) - Date.parse(new Date());
+  var seconds = Math.floor( (t/1000) % 60 );
+  var minutes = Math.floor( (t/1000/60) % 60 );
+  var hours = Math.floor( (t/(1000*60*60)) % 24 );
+  var days = Math.floor( t/(1000*60*60*24) );
 	}
 };
